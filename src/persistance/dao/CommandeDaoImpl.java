@@ -9,44 +9,19 @@ import org.hibernate.Transaction;
 import persistance.entities.Commande;
 import persistance.entities.CommandeId;
 
-public class CommandeDaoImpl implements CommandeDao {
+public class CommandeDaoImpl implements GlobalDao<Commande> {
 
 	@Override
-	public void add(Commande commande) {
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			
-			Transaction tx = session.beginTransaction();
-			session.save(commande);
-			tx.commit();
-		}
+	public Commande findById(int id) {
+		return null;
 	}
 
 	@Override
-	public void delete(Commande commande) {
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			
-			Transaction tx = session.beginTransaction();
-			session.delete(commande);
-			tx.commit();
-		}
-	}
-
-	@Override
-	public void update(Commande commande) {
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			
-			Transaction tx = session.beginTransaction();
-			session.update(commande);
-			tx.commit();
-		}
-	}
-
-	@Override
-	public Commande findById(CommandeId commandeId) {
+	public Commande findById(Commande c) {
 		Commande commande = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			
-			commande = session.get(Commande.class, commandeId);
+			commande = session.get(Commande.class, c.getId());
 		}
 		return commande;
 	}
@@ -60,5 +35,7 @@ public class CommandeDaoImpl implements CommandeDao {
 		}
 		return listCommandes;
 	}
+
+	
 
 }

@@ -7,37 +7,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import persistance.entities.Categorie;
+import persistance.entities.Client;
 
-public class CategorieDaoImpl implements CategorieDao {
-
-	@Override
-	public void add(Categorie categorie) {
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			
-			Transaction tx = session.beginTransaction();
-			session.save(categorie);
-			tx.commit();
-		}
-	}
+public class CategorieDaoImpl implements GlobalDao<Categorie> {
 
 	@Override
-	public void delete(Categorie categorie) {
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			
-			Transaction tx = session.beginTransaction();
-			session.delete(categorie);
-			tx.commit();
-		}
-	}
-
-	@Override
-	public void update(Categorie categorie) {
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			
-			Transaction tx = session.beginTransaction();
-			session.update(categorie);
-			tx.commit();
-		}
+	public Categorie findById(Categorie c) {
+		return null;
 	}
 
 	@Override

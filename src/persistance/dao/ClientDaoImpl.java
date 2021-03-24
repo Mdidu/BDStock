@@ -8,37 +8,11 @@ import org.hibernate.Transaction;
 
 import persistance.entities.Client;
 
-public class ClientDaoImpl implements ClientDao {
+public class ClientDaoImpl implements GlobalDao<Client> {
 
 	@Override
-	public void add(Client client) {
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-
-			Transaction tx = session.beginTransaction();
-			session.save(client);
-			tx.commit();
-		}
-	}
-
-	@Override
-	public void delete(Client client) {
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-
-			Transaction tx = session.beginTransaction();
-			session.delete(client);
-			tx.commit();
-		}
-
-	}
-
-	@Override
-	public void update(Client client) {
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-
-			Transaction tx = session.beginTransaction();
-			session.update(client);
-			tx.commit();
-		}
+	public Client findById(Client c) {
+		return null;
 	}
 
 	@Override

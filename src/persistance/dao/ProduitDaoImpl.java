@@ -8,36 +8,11 @@ import org.hibernate.Transaction;
 
 import persistance.entities.Produit;
 
-public class ProduitDaoImpl implements ProduitDao {
+public class ProduitDaoImpl implements GlobalDao<Produit> {
 
 	@Override
-	public void add(Produit produit) {
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			
-			Transaction tx = session.beginTransaction();
-			session.save(produit);
-			tx.commit();
-		}
-	}
-
-	@Override
-	public void delete(Produit produit) {
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			
-			Transaction tx = session.beginTransaction();
-			session.delete(produit);
-			tx.commit();
-		}
-	}
-
-	@Override
-	public void update(Produit produit) {
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			
-			Transaction tx = session.beginTransaction();
-			session.update(produit);
-			tx.commit();
-		}
+	public Produit findById(Produit p) {
+		return null;
 	}
 
 	@Override
